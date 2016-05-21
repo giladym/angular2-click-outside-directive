@@ -1,0 +1,10 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1>{{title}}</h1>
+        <p class="btn btn-lg  btn-default" (click)="handleClick( $event )"
+           (clickOutside)="handleClickOutside( $event )">
+            <span > Click  to find where you clicked</span>
+        </p>
+        <p *ngIf="clickResult" class="alert-{{isInside?'info':'success'}} alert">{{clickResult}}</p>
+   </div>
+</div>
