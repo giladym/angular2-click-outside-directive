@@ -25,6 +25,27 @@ At that point we compare to see if the event passed the Element Host component.
     }
 })
 ```
+Track user click from inside the bound target
+We use this to track the click Event when it bubbles up the DOM tree
+```[html]
+   trackEvent(event){
+        // private @localEvent to keep ref of the event we clicked
+        this.localEvent = event; 
+    }
+```  
+
+Compare event at the Document level to a reference of the Element:click
+This method triggers when we are on Document level  - Document was clicked or event bubbling
+If the Document click DON'T MATCH the Event:click reference  => than the click is from outside of the Element
+```[html]
+   compareEvent(event){
+        if ( event !== this.localEvent ) {
+            this.clickOutside.emit( event );
+        }
+        this.localEvent = null;
+    }
+```    
+
 
 ## Setup
 To use this project please do the following steps;
